@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RescuePanel.Rescue_Default">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RAd_btn_motorway"
+        android:text="Motorway"
+
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RAd_btn_highway"
+        android:layout_below="@+id/RAd_btn_motorway"
+        android:text="Highway"
+
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RAd_btn_Rescue"
+        android:layout_below="@+id/RAd_btn_highway"
+
+        android:text="Rescue"
+
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RAd_btn_15"
+        android:text="15"
+        android:layout_below="@+id/RAd_btn_Rescue"
+
+
+
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/RAd_btn_pcsw"
+        android:text="Pcsw"
+        android:layout_below="@+id/RAd_btn_15"
+
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    tools:context=".Simple_User.MissingChild">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+
+        >
+        <TextView
+            android:id="@+id/AMC_TV_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+
+            />
+        <TextView
+            android:id="@+id/AMC_TV_Image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Image"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+
+            />
+        <TextView
+            android:id="@+id/AMC_TV_Age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+
+            />
+        <TextView
+            android:id="@+id/AMC_TV_FatherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Father Name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            />
+        <TextView
+            android:id="@+id/AMC_TV_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            />
+        <TextView
+            android:id="@+id/AMC_TV_Contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            />
+        <TextView
+            android:id="@+id/AMC_TV_IdentificationMark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Identification Mark"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            />
+        <TextView
+            android:id="@+id/AMC_TV_Gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            />
+        <TextView
+            android:id="@+id/AMC_TV_MissingSince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Missing Since"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+
+        >
+        <EditText
+            android:id="@+id/AMC_ET_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+
+            />
+        <ImageView
+            android:id="@+id/AMC_IV_Image"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+
+            />
+        <EditText
+            android:id="@+id/AMC_ET_Age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="age"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+
+            />
+        <EditText
+            android:id="@+id/AMC_ET_FatherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Father Name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:id="@+id/AMC_ET_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:id="@+id/AMC_ET_Contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="0300000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:id="@+id/AMC_ET_IdentificationMark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="black spot on face"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+        <Spinner
+            android:id="@+id/AMC_Spinner_Gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            />
+        <EditText
+            android:id="@+id/AMC_ET_MissingSince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="date"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AMC_BTN_Submit"
+            android:text="Submit"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

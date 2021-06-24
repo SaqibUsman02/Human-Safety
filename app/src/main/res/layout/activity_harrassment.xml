@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Simple_User.Harrassment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/SV_AH"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name "
+            android:textSize="15dp"
+            android:id="@+id/txt_name"
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number "
+            android:textSize="15dp"
+            android:id="@+id/txt_mobile"
+            android:layout_below="@+id/txt_name"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="District "
+            android:textSize="15dp"
+            android:id="@+id/txt_District"
+            android:layout_below="@+id/txt_mobile"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type "
+            android:textSize="15dp"
+            android:id="@+id/txt_Types"
+            android:layout_below="@+id/txt_District"
+            android:layout_marginTop="15dp"
+
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Father Name "
+            android:textSize="15dp"
+            android:id="@+id/txt_Father"
+            android:layout_below="@+id/txt_District"
+            android:layout_marginTop="15dp"
+
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Secondary Contact Number "
+            android:textSize="15dp"
+            android:id="@+id/txt_sec_Contact"
+            android:layout_below="@+id/txt_Father"
+            android:layout_marginTop="15dp"
+
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tehsil "
+            android:textSize="15dp"
+            android:id="@+id/txt_sec_Tehsil"
+            android:layout_below="@+id/txt_sec_Contact"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sub Type "
+            android:textSize="15dp"
+            android:id="@+id/txt_Type"
+            android:layout_below="@+id/txt_sec_Contact"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender "
+            android:textSize="15dp"
+            android:id="@+id/txt_Gender"
+            android:layout_below="@+id/txt_Type"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CNIC "
+            android:textSize="15dp"
+            android:id="@+id/txt_CNIC"
+            android:layout_below="@+id/txt_Gender"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nature Of Call "
+            android:textSize="15dp"
+            android:id="@+id/txt_NOC"
+            android:layout_below="@+id/txt_CNIC"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address "
+            android:textSize="15dp"
+            android:id="@+id/txt_address"
+            android:layout_below="@+id/txt_CNIC"
+            android:layout_marginTop="15dp"
+
+
+            />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complaint "
+            android:textSize="15dp"
+            android:id="@+id/txt_complaint"
+            android:layout_below="@+id/txt_address"
+            android:layout_marginTop="15dp"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_name"
+            android:id="@+id/edt_FH_name"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_name" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_mobile"
+            android:id="@+id/edt_FH_MobileNumber"
+            android:layout_below="@+id/edt_FH_name"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_mobile" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_District"
+            android:layout_below="@+id/edt_FH_MobileNumber"
+            android:id="@+id/edt_FH_District"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_District" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_Type"
+            android:layout_below="@+id/edt_FH_District"
+            android:id="@+id/edt_FH_Type"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_Type" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_Father"
+            android:layout_below="@+id/edt_FH_Type"
+            android:id="@+id/edt_FH_Father"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_Father" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_sec_Contact"
+            android:layout_below="@+id/edt_FH_Father"
+            android:id="@+id/edt_FH_sec_contact"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_sec_Contact" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_District"
+            android:layout_below="@+id/edt_FH_sec_contact"
+            android:id="@+id/edt_FH_Di"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_District" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_District"
+            android:layout_below="@+id/edt_FH_MobileNumber"
+            android:id="@+id/edt_FH_District"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_District" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_District"
+            android:layout_below="@+id/edt_FH_MobileNumber"
+            android:id="@+id/edt_FH_District"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_District" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/txt_District"
+            android:layout_below="@+id/edt_FH_MobileNumber"
+            android:id="@+id/edt_FH_District"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/txt_District" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+
+
+</RelativeLayout>

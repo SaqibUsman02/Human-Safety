@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Simple_User.Default">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ULD_CL"
+        >
+        <Button
+            android:id="@+id/AD_BTN_Alert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alert"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+        <Button
+            android:id="@+id/AD_BTN_Harrassment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harassment"
+app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/AD_BTN_Alert"
+            android:layout_marginLeft="30dp" />
+        <Button
+            android:id="@+id/AD_BTN_MissingChild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Missing Child"
+
+            app:layout_constraintTop_toBottomOf="@+id/AD_BTN_Harrassment"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <Button
+            android:id="@+id/AD_BTN_Feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feedback"
+            app:layout_constraintTop_toBottomOf="@+id/AD_BTN_MissingChild"
+            app:layout_constraintStart_toEndOf="@+id/Btn_ULD_MissingChild"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp" />
+        <Button
+            android:id="@+id/AD_BTN_Rescue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rescue"
+            app:layout_constraintTop_toBottomOf="@+id/AD_BTN_Feedback"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/FL_default"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
