@@ -3,6 +3,8 @@
     package="com.example.humansafety">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HumanSafety">
-        <activity android:name=".RescuePanel.Rescue_Default"></activity>
+        <activity android:name=".Messages"></activity>
+        <activity android:name=".Simple_User.Rescue_login" />
+        <activity android:name=".RescuePanel.Rescue_Notify" />
+        <activity android:name=".RescuePanel.PCSW_Notify" />
+        <activity android:name=".RescuePanel.Alert_15_Notify" />
+        <activity android:name=".RescuePanel.Highway_Notify" />
+        <activity android:name=".RescuePanel.Motoway_Notify" />
+        <activity android:name=".RescuePanel.Rescue_Default" />
         <activity android:name=".Simple_User.Harrassment" />
         <activity android:name=".Simple_User.Rescue" />
         <activity android:name=".Simple_User.MissingChild" />
@@ -26,8 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Simple_User.LoginAndReg" />
         <activity android:name=".Simple_User.MainActivity" />
+
+        <service android:name=".AndroidServices" />
     </application>
 
 </manifest>

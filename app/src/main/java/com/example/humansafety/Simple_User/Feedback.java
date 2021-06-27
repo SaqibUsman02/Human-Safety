@@ -1,5 +1,6 @@
 package com.example.humansafety.Simple_User;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,12 +10,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.humansafety.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Feedback extends AppCompatActivity {
     EditText edt_name,edt_comment;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    FirebaseAuth auth;
+
 
     Button btn_Submit;
 
@@ -22,9 +33,30 @@ public class Feedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
-        edt_name=findViewById(R.id.AF_ET_Name);
-        edt_comment=findViewById(R.id.AF_ET_Detail);
+        edt_name=findViewById(R.id.AF_TIET_name);
+        edt_comment=findViewById(R.id.AF_TIET_feedback);
         btn_Submit= findViewById(R.id.AF_btn_Submit);
+        auth=FirebaseAuth.getInstance();
+        String uid=auth.getCurrentUser().getUid();
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("Feedback");
+
+
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        firebaseDatabase.getReference().child("Feedback").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()) {
+
+                  Map<String,Object> data=(Map<String,Object>) task.getResult().getValue();
+                String deti= data.get("Detail").toString();
+                String namee= data.get("Name").toString();
+                edt_comment.setText(""+deti);
+                edt_name.setText(""+namee);
+
+                }
+
+            }
+        });
 
         btn_Submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,9 +64,10 @@ public class Feedback extends AppCompatActivity {
                 String get_name=edt_name.getText().toString();
                 String get_comment=edt_comment.getText().toString();
 
-                HashMap<String, Object> data = new HashMap<>();
-                data.put("Name: ",get_name);
-                data.put("Detail: ",get_comment);
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("Detail",get_comment);
+                map.put("Name",get_name);
+
 
                 if(get_name.isEmpty() || get_comment.isEmpty())
                 {
@@ -42,7 +75,7 @@ public class Feedback extends AppCompatActivity {
                 }
                 else
                 {
-                    FirebaseDatabase.getInstance().getReference().child("Feedback").push().child("Feedback Record").setValue(data);
+                    databaseReference.child(auth.getCurrentUser().getUid()).setValue(map);
 
                 }
             }

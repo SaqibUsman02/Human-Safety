@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.humansafety.AndroidServices;
 import com.example.humansafety.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,17 +23,26 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ProgressDialog progressDialog;
    EditText txt_email,txt_pass;
-   Button btn_login,btn_reg;
+   Button btn_login,btn_Rescue;
+   TextView btn_reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-       txt_email=findViewById(R.id.AL_edt_email);
-       txt_pass=findViewById(R.id.AL_edt_pass);
-       btn_login=findViewById(R.id.AL_btn_Login);
-       btn_reg=findViewById(R.id.AL_btn_Reg);
+       txt_email=findViewById(R.id.AL_TIET_email);
+       txt_pass=findViewById(R.id.AL_TIET_password);
+       btn_login=findViewById(R.id.LA_btn_login);
+//       btn_Rescue=findViewById(R.id.AL_btn_RegRescue);
+       btn_reg=findViewById(R.id.AL_txt_signup);
         progressDialog=new ProgressDialog(this);
+//
+//        btn_Rescue.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(),Rescue_login.class));
+//            }
+//        });
 
        btn_login.setOnClickListener(new View.OnClickListener() {
            @Override
