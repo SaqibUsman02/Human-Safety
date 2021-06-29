@@ -15,20 +15,16 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class Rescue_Adapter extends FirebaseRecyclerAdapter<Motorway_model,Rescue_Adapter.ViewHolder> {
 
-    /**
-     * Initialize a {@link androidx.recyclerview.widget.RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link com.firebase.ui.database.FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
+
     public Rescue_Adapter(@NonNull FirebaseRecyclerOptions<Motorway_model> options) {
         super(options);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull Rescue_Adapter.ViewHolder holder, int position, @NonNull Motorway_model model) {
-        holder.ID.setText(model.getUser());
+        holder.Name.setText(model.getName());
         holder.Num.setText(model.getNumber());
+        holder.Address.setText(model.getLocation());
 
 
     }
@@ -38,14 +34,18 @@ public class Rescue_Adapter extends FirebaseRecyclerAdapter<Motorway_model,Rescu
     public Rescue_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.motorway_item,parent,false);
         return new Rescue_Adapter.ViewHolder(view);
-    }  public class ViewHolder extends  RecyclerView.ViewHolder{
-        TextView ID;
+    }
+
+    public class ViewHolder extends  RecyclerView.ViewHolder{
+        TextView Name;
         TextView Num;
+        TextView Address;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ID=itemView.findViewById(R.id.MI_TV_ID);
-            Num=itemView.findViewById(R.id.MI_TV_Number);
+            Name=itemView.findViewById(R.id.Notify_name);
+            Num=itemView.findViewById(R.id.Notify_Number);
+            Address=itemView.findViewById(R.id.Notify_Address);
 
         }
     }

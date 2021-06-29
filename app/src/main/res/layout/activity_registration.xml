@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_1"
+
     android:orientation="vertical"
     tools:context=".Simple_User.Registration">
     <TextView
@@ -50,7 +52,7 @@
                 app:layout_constraintVertical_bias="0.060000002">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/AMC_TIET_name"
+                    android:id="@+id/AR_TIET_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -77,7 +79,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/AMC_TIET_email"
+                    android:id="@+id/AR_TIET_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
@@ -105,7 +107,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/AMC_TIET_pass"
+                    android:id="@+id/AR_TIET_pass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"/>
@@ -133,7 +135,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/AMC_TIET_address"
+                    android:id="@+id/AR_TIET_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -160,7 +162,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/AMC_TIET_contact"
+                    android:id="@+id/AR_TIET_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number" />
@@ -188,7 +190,7 @@
                 app:layout_constraintTop_toBottomOf="@id/textInputLayout5">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/AMC_TIET_dob"
+                    android:id="@+id/AR_TIET_dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date" />
@@ -225,7 +227,7 @@
                 app:layout_constraintVertical_bias="0.0">
 
                 <RadioButton
-                    android:id="@+id/AMC_rb_male"
+                    android:id="@+id/AR_rb_male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
@@ -233,7 +235,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/AMC_rb_female"
+                    android:id="@+id/AR_rb_female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female"
@@ -244,7 +246,7 @@
             </RadioGroup>
 
             <Button
-                android:id="@+id/AMC_btn_Register"
+                android:id="@+id/AR_btn_Register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -258,7 +260,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
              <Button
-                android:id="@+id/AMC_btn_Login"
+                android:id="@+id/AR_btn_Login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

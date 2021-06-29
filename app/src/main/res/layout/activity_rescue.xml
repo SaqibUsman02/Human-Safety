@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent"    android:background="@drawable/gradient_2"
+
     android:orientation="vertical"
     tools:context=".Simple_User.Rescue">
 
@@ -20,7 +21,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1">
 
@@ -49,7 +50,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1">
 
@@ -86,7 +87,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1">
 
@@ -115,7 +116,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1">
 
@@ -153,7 +154,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1">
 
@@ -182,7 +183,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             app:cardCornerRadius="10dp"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1">
 

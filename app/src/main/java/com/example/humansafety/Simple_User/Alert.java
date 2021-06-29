@@ -6,9 +6,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
+import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -20,29 +20,24 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.humansafety.AndroidServices;
 import com.example.humansafety.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-
-import static android.view.KeyEvent.KEYCODE_VOLUME_DOWN;
-import static android.view.KeyEvent.KEYCODE_VOLUME_UP;
 
 public class Alert extends AppCompatActivity {
     Spinner spinner;
+
     List<String> spinnerList = new ArrayList<>();
     EditText contact, message, location;
     Button btn_Save, btn_SendAlert;
@@ -54,6 +49,7 @@ public class Alert extends AppCompatActivity {
     String Save_Spinner;
 
 
+    private FusedLocationProviderClient fLlocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +61,38 @@ public class Alert extends AppCompatActivity {
         location = findViewById(R.id.AA_TIET_location);
         btn_Save = findViewById(R.id.AA_btn_save);
         btn_SendAlert = findViewById(R.id.AA_btn_Alert);
+        fLlocation= LocationServices.getFusedLocationProviderClient(this);
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
+                    if(getApplicationContext().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                    {
+                        fLlocation.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Location> task) {
+                                Location locate= task.getResult();
+                                if(locate!=null)
+                                {
+
+                                    double lat= locate.getLatitude();
+                                    double longi = locate.getLongitude();
+                                    location.setText(""+lat+","+longi+"");
+
+                                }
+                            }
+                        });
+                    }
+                    else
+                    {
+                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},1);
+                    }
+                }
+
+            }
+        });
+
 
 
         spinnerList.add("Emergency");
@@ -90,7 +118,6 @@ public class Alert extends AppCompatActivity {
                     String num = map.get("Contact").toString();
                     String Locate = map.get("Location").toString();
                     String msg = map.get("Message").toString();
-                    String s=map.get("Alert Type").toString();
                     contact.setText("" + num);
                     location.setText("" + Locate);
                     message.setText("" + msg);
@@ -109,6 +136,7 @@ public class Alert extends AppCompatActivity {
                 String get_Contact = contact.getText().toString();
                 String get_Message = message.getText().toString();
                 String get_Location = location.getText().toString();
+
                 HashMap<String, Object> map = new HashMap<>();
                 map.put("Contact", get_Contact);
                 map.put("Message", get_Message);
@@ -119,10 +147,10 @@ public class Alert extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Empty DATA", Toast.LENGTH_SHORT).show();
                 } else {
                     databaseReference.child(auth.getCurrentUser().getUid()).setValue(map);
+                    Toast.makeText(Alert.this, "Saved Successfully", Toast.LENGTH_SHORT).show();
 
                 }
 
-                startService(new Intent(getApplicationContext(), AndroidServices.class));
 
             }
         });
@@ -133,7 +161,6 @@ public class Alert extends AppCompatActivity {
 
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
 
-                Toast.makeText(getApplicationContext(), "Uppppppppppp", Toast.LENGTH_SHORT).show();
                 SendMessage();
             } else {
                 ActivityCompat.requestPermissions(Alert.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE}, 100);
@@ -146,58 +173,33 @@ public class Alert extends AppCompatActivity {
     }
 
 
-//    //it will check any key press in android phone
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//
-//
-//        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-//            event.startTracking();
-//            return true;
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
-//
-//    @Override
-//    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-//            Toast.makeText(this, "execute", Toast.LENGTH_SHORT).show();
-//
-//            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-//
-//                Toast.makeText(this, "Uppppppppppp", Toast.LENGTH_SHORT).show();
-//                SendMessage();
-//            } else {
-//                ActivityCompat.requestPermissions(Alert.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE}, 100);
-//            }
-//
-//        }
-//        return super.onKeyLongPress(keyCode, event);
-//
-//    }
-//
-////    //it will execute when key is released
-////    @Override
-////    public boolean onKeyUp(int keyCode, KeyEvent event) {
-////        if(keyCode== KeyEvent.KEYCODE_VOLUME_UP) {
-////            end=System.currentTimeMillis() - save1;
-////            res=end/1000;
-//            int s=(int)res;
-//            Toast.makeText(this, ""+s, Toast.LENGTH_SHORT).show();
-//            if(s>=45) {
-//                Toast.makeText(this, "kkkkkkkk"+res, Toast.LENGTH_SHORT).show();
-//            }00002
+    //it will check any key press in android phone
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-//            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-//
-//                Toast.makeText(this, "Uppppppppppp", Toast.LENGTH_SHORT).show();
-//                SendMessage();
-//            } else {
-//                ActivityCompat.requestPermissions(Alert.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE}, 100);
-////            }
-//        }
-//        return super.onKeyUp(keyCode, event);
-//    }
+
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            event.startTracking();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+
+                SendMessage();
+            } else {
+                ActivityCompat.requestPermissions(Alert.this, new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE}, 100);
+            }
+
+        }
+        return super.onKeyLongPress(keyCode, event);
+
+    }
 
         public void SendMessage () {
 

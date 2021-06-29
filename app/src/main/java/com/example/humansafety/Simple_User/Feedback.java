@@ -22,7 +22,6 @@ import java.util.Map;
 
 public class Feedback extends AppCompatActivity {
     EditText edt_name,edt_comment;
-    FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth auth;
 
@@ -41,22 +40,7 @@ public class Feedback extends AppCompatActivity {
         databaseReference=FirebaseDatabase.getInstance().getReference().child("Feedback");
 
 
-        firebaseDatabase=FirebaseDatabase.getInstance();
-        firebaseDatabase.getReference().child("Feedback").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if(task.isSuccessful()) {
 
-                  Map<String,Object> data=(Map<String,Object>) task.getResult().getValue();
-                String deti= data.get("Detail").toString();
-                String namee= data.get("Name").toString();
-                edt_comment.setText(""+deti);
-                edt_name.setText(""+namee);
-
-                }
-
-            }
-        });
 
         btn_Submit.setOnClickListener(new View.OnClickListener() {
             @Override

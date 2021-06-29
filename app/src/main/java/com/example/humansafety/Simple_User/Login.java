@@ -12,18 +12,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.humansafety.AndroidServices;
+import com.example.humansafety.FBAuthActivity;
 import com.example.humansafety.R;
+import com.example.humansafety.RescuePanel.Rescue_login;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
     ProgressDialog progressDialog;
    EditText txt_email,txt_pass;
-   Button btn_login,btn_Rescue;
+   Button btn_login,btn_Rescue,btn_fb;
    TextView btn_reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +34,32 @@ public class Login extends AppCompatActivity {
        txt_email=findViewById(R.id.AL_TIET_email);
        txt_pass=findViewById(R.id.AL_TIET_password);
        btn_login=findViewById(R.id.LA_btn_login);
-//       btn_Rescue=findViewById(R.id.AL_btn_RegRescue);
+       btn_Rescue=findViewById(R.id.AdminLogin);
        btn_reg=findViewById(R.id.AL_txt_signup);
+       btn_fb=findViewById(R.id.buttonfacebook);
         progressDialog=new ProgressDialog(this);
-//
-//        btn_Rescue.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(),Rescue_login.class));
-//            }
-//        });
+
+        btn_fb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FBAuthActivity.class));
+            }
+        });
+
+        btn_Rescue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Rescue_login.class));
+            }
+        });
 
        btn_login.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                String get_email=txt_email.getText().toString();
                String get_pass=txt_pass.getText().toString();
-               progressDialog.setTitle("Loggin in");
-               progressDialog.setMessage("Wait,");
+               progressDialog.setTitle("Wait.....");
+               progressDialog.setMessage("Checking Your Credential");
                progressDialog.show();
                progressDialog.setCanceledOnTouchOutside(false);
                mAuth.signInWithEmailAndPassword(get_email,get_pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -58,7 +67,6 @@ public class Login extends AppCompatActivity {
                    public void onComplete(@NonNull Task<AuthResult> task) {
                        if(task.isSuccessful())
                        {
-                           Toast.makeText(getApplicationContext(),"login",Toast.LENGTH_SHORT).show();
                            progressDialog.dismiss();
                            startActivity(new Intent(getApplicationContext(), Default.class));
                            finish();

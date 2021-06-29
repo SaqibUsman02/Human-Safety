@@ -1,6 +1,7 @@
 package com.example.humansafety.Simple_User;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,18 +9,27 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.humansafety.R;
+import com.example.humansafety.RescuePanel.Missing_Child_Recycler;
 
 public class Default extends AppCompatActivity {
-    Button Alert,MissingChild,Harrasment,Feedback,Rescue;
+    CardView Alert,MissingChild,Harrasment,Feedback,Rescue,All_Missing_Child;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_default);
-        Alert =findViewById(R.id.AD_BTN_Alert);
-        MissingChild =findViewById(R.id.AD_BTN_MissingChild);
-        Feedback =findViewById(R.id.AD_BTN_Feedback);
-        Rescue =findViewById(R.id.AD_BTN_Rescue);
-        Harrasment=findViewById(R.id.AD_BTN_Harrassment);
+        Alert =findViewById(R.id.Alert_user_btn);
+        MissingChild =findViewById(R.id.Missing_user_btn);
+        Feedback =findViewById(R.id.Feedback_user_btn);
+        Rescue =findViewById(R.id.Rescue_user_btn);
+        Harrasment=findViewById(R.id.Harrasment_user_btn);
+        All_Missing_Child=findViewById(R.id.Missing_Children_user_btn);
+
+        All_Missing_Child.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Missing_Child_Recycler.class));
+            }
+        });
 
         Alert.setOnClickListener(new View.OnClickListener() {
             @Override

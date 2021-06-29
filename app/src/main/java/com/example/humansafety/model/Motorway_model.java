@@ -1,39 +1,27 @@
 package com.example.humansafety.model;
 
 public class Motorway_model {
-   String Number;
-   String User;
+  String Location,Name,Number;
 
-    @Override
-    public String toString() {
-        return "Motorway_model{" +
-                "Number='" + Number + '\'' +
-                ", User='" + User + '\'' +
-                '}';
+    public Motorway_model(String name, String location, String number) {
+        Name = name;
+        Location = location;
+        Number = number;
     }
 
     public Motorway_model() {
     }
 
-    public Motorway_model(String number, String user) {
-        Number = number;
-        User = user;
+    public String getName() {
+        return Name;
+    }
+
+    public String getLocation() {
+        return Location;
     }
 
     public String getNumber() {
         return Number;
-    }
-
-    public void setNumber(String number) {
-        Number = number;
-    }
-
-    public String getUser() {
-        return User;
-    }
-
-    public void setUser(String user) {
-        User = user;
     }
 }
 

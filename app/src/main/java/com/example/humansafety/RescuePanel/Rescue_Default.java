@@ -1,6 +1,7 @@
 package com.example.humansafety.RescuePanel;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,21 +12,35 @@ import com.example.humansafety.R;
 
 public class Rescue_Default extends AppCompatActivity {
 
-    Button btn_Motorway,btn_Highway,btn_15,btn_pcsw,btn_1122;
+    CardView btn_Motorway,btn_15,btn_pcsw,btn_1122,Missing_Childs,Harrassment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rescue__default);
-        btn_Motorway=findViewById(R.id.RAd_btn_motorway);
-        btn_15=findViewById(R.id.RAd_btn_15);
-        btn_Highway=findViewById(R.id.RAd_btn_highway);
-        btn_pcsw=findViewById(R.id.RAd_btn_pcsw);
-        btn_1122=findViewById(R.id.RAd_btn_Rescue);
+        btn_Motorway=findViewById(R.id.RD_MT);
+        btn_15=findViewById(R.id.RD_15);
+        btn_pcsw=findViewById(R.id.RD_PCSW);
+        Harrassment=findViewById(R.id.RD_Harrassment);
+        btn_1122=findViewById(R.id.RD_Resc);
+        Missing_Childs=findViewById(R.id.RD_MC);
 
+        Harrassment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Harrassment_Notify.class));
+            }
+        });
         btn_Motorway.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Motoway_Notify.class));
+
+            }
+        });
+        Missing_Childs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Missing_Child_Recycler.class));
 
             }
         });
@@ -50,12 +65,6 @@ public class Rescue_Default extends AppCompatActivity {
 
             }
         });
-        btn_Highway.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Highway_Notify.class));
 
-            }
-        });
     }
 }

@@ -27,8 +27,9 @@ public class PCSW_Adapter  extends FirebaseRecyclerAdapter<Motorway_model,PCSW_A
 
     @Override
     protected void onBindViewHolder(@NonNull PCSW_Adapter.ViewHolder holder, int position, @NonNull Motorway_model model) {
-        holder.ID.setText(model.getUser());
+        holder.Name.setText(model.getName());
         holder.Num.setText(model.getNumber());
+        holder.Address.setText(model.getLocation());
 
 
     }
@@ -39,13 +40,15 @@ public class PCSW_Adapter  extends FirebaseRecyclerAdapter<Motorway_model,PCSW_A
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.motorway_item,parent,false);
         return new PCSW_Adapter.ViewHolder(view);
     }  public class ViewHolder extends  RecyclerView.ViewHolder{
-        TextView ID;
+        TextView Name;
         TextView Num;
+        TextView Address;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ID=itemView.findViewById(R.id.MI_TV_ID);
-            Num=itemView.findViewById(R.id.MI_TV_Number);
+            Name=itemView.findViewById(R.id.Notify_name);
+            Num=itemView.findViewById(R.id.Notify_Number);
+            Address=itemView.findViewById(R.id.Notify_Address);
 
         }
     }

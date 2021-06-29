@@ -27,9 +27,9 @@ public class Alert_15 extends FirebaseRecyclerAdapter<Motorway_model,Alert_15.Vi
 
     @Override
     protected void onBindViewHolder(@NonNull Alert_15.ViewHolder holder, int position, @NonNull Motorway_model model) {
-        holder.ID.setText(model.getUser());
+        holder.Name.setText(model.getName());
         holder.Num.setText(model.getNumber());
-
+        holder.Address.setText(model.getLocation());
 
     }
 
@@ -39,13 +39,15 @@ public class Alert_15 extends FirebaseRecyclerAdapter<Motorway_model,Alert_15.Vi
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.motorway_item,parent,false);
         return new Alert_15.ViewHolder(view);
     }  public class ViewHolder extends  RecyclerView.ViewHolder{
-        TextView ID;
+        TextView Name;
         TextView Num;
+        TextView Address;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ID=itemView.findViewById(R.id.MI_TV_ID);
-            Num=itemView.findViewById(R.id.MI_TV_Number);
+            Name=itemView.findViewById(R.id.Notify_name);
+            Num=itemView.findViewById(R.id.Notify_Number);
+            Address=itemView.findViewById(R.id.Notify_Address);
 
         }
     }

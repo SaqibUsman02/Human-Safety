@@ -1,5 +1,6 @@
 package com.example.humansafety.Simple_User;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -16,11 +17,15 @@ import android.widget.Button;
 import com.example.humansafety.R;
 import com.example.humansafety.RescuePanel.Highway_Notify;
 import com.example.humansafety.RescuePanel.Motoway_Notify;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Rescue extends AppCompatActivity {
 
@@ -29,6 +34,10 @@ public class Rescue extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference databaseReference;
     CardView Rescue1122,pcsw,mthigh,ranger,alert15,fire;
+    String getName;
+    FirebaseDatabase firebaseDatabase;
+    String Address;
+    FirebaseDatabase forAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +59,31 @@ public class Rescue extends AppCompatActivity {
                 int number=16;
                 String text="Fire Brigade";
 
-                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text,uid);
+                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text);
 
+
+            }
+        });
+
+         forAddress=FirebaseDatabase.getInstance();
+        forAddress.getReference().child("Alert").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                Map<String,Object> map=(Map<String, Object>)task.getResult().getValue();
+                Address=map.get("Location").toString();
+            }
+        });
+
+        firebaseDatabase=FirebaseDatabase.getInstance() ;
+        firebaseDatabase.getReference().child("Registered Account").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful())
+                {
+                    Map<String,Object> map=(Map<String, Object>)task.getResult().getValue();
+                    String Name=map.get("Name").toString();
+                    getName=Name;
+                }
 
             }
         });
@@ -62,7 +94,7 @@ public class Rescue extends AppCompatActivity {
                 int number=042-99220030;
                 String text="Rangers";
 
-                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text,uid);
+                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text);
 
             }
         });
@@ -74,7 +106,7 @@ public class Rescue extends AppCompatActivity {
                 int number=1122;
                 String text="Rescue1122";
 
-                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text,uid);
+                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text);
             }
         });
 
@@ -86,7 +118,7 @@ public class Rescue extends AppCompatActivity {
             public void onClick(View v) {
                 int number=15;
                 String text="15";
-                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text,uid);
+                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text);
             }
         });
         mthigh.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +127,7 @@ public class Rescue extends AppCompatActivity {
                 int number=130;
                 String text="Motorway";
 
-                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text,uid);
+                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text);
             }
         });
 
@@ -104,12 +136,12 @@ public class Rescue extends AppCompatActivity {
             public void onClick(View v) {
                 int number=1043;;
                 String text="PCSW";
-                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text,uid);
+                checkPermission(Manifest.permission.CALL_PHONE, CAll_PERMISSION_CODE,number,v,text);
             }
         });
 
     }
-    public void DialNumber(int number,String text,String u)
+    public void DialNumber(int number,String text,String name,String address)
     {
 
         String phoneNumber ="tel:"+number;
@@ -118,14 +150,15 @@ public class Rescue extends AppCompatActivity {
         startActivity(intent);
         HashMap<String, Object> map= new HashMap<>();
         map.put("Number",phoneNumber);
-        map.put("User",u);
+        map.put("Name",name);
+        map.put("Location",address);
         databaseReference.child(text).child(auth.getCurrentUser().getUid()).setValue(map);
 //        FirebaseDatabase.getInstance().getReference().child("Call Record").push().child(text).setValue(map);
 
     }
 
     //Check Permission Granted or not and take permission from user.
-    public void checkPermission(String permission, int requestCode,int number,View view,String text,String u)
+    public void checkPermission(String permission, int requestCode,int number,View view,String text)
     {
         if (ContextCompat.checkSelfPermission(getApplicationContext(), permission) == PackageManager.PERMISSION_DENIED) {
 
@@ -133,7 +166,7 @@ public class Rescue extends AppCompatActivity {
             ActivityCompat.requestPermissions(Rescue.this, new String[] { permission }, requestCode);
         }
         else {
-            DialNumber(number,text,u);
+            DialNumber(number,text,getName,Address);
 
         }
 
